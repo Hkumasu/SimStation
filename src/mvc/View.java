@@ -4,6 +4,11 @@ package mvc;
 4/4/23 - Hazuki Sugahara: Created the file
 */
 
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 public class View extends JPanel implements PropertyChangeListener {
 
     protected Model model;
