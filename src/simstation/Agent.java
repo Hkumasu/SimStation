@@ -41,7 +41,7 @@ abstract class Agent implements Serializable, Runnable {
         try {
             if (myThread != null) myThread.join();
         } catch(InterruptedException e) {
-            manager.println(e.getMessage());
+            e.printStackTrace();
         }
     }
     private synchronized void checkSuspended() {
@@ -51,7 +51,7 @@ abstract class Agent implements Serializable, Runnable {
                 suspended = false;
             }
         } catch (InterruptedException e) {
-            manager.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -64,10 +64,9 @@ abstract class Agent implements Serializable, Runnable {
                 Thread.sleep(1000);
                 checkSuspended();
             } catch(InterruptedException e) {
-                manager.println(e.getMessage());
+                e.printStackTrace();
             }
         }
-        manager.stdout.println(name + " stopped");
     }
 
     public abstract void update();
