@@ -16,6 +16,8 @@ public class Simulation extends Model{
     private Point location;
     private List<Point>path;
 
+    public static Integer windowSize = 250;
+
     public Simulation() {
         location = new Point(125, 125);
         this.path = new ArrayList<Point>();
@@ -49,7 +51,7 @@ public class Simulation extends Model{
     }
 
     public void populate() {
-        //will defind in the subclass
+
     }
 
     public void stop() {
