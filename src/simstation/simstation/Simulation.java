@@ -1,0 +1,74 @@
+/*
+4/4/23 - Hazuki Sugahara: Created the file
+4/6/23 - Hazuki Sugahara: Modified the file and still modifiying
+*/
+
+package simstation;
+
+import mvc.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class Simulation extends Model{
+    int clock = 0;
+    private Point location;
+    private List<Point>path;
+
+    public static Integer windowSize = 250;
+
+    public Simulation() {
+        location = new Point(125, 125);
+        this.path = new ArrayList<Point>();
+    }
+
+    public Point getLocation()  { return location;}
+    public Iterator<Point> iterator() { return path.iterator(); }
+    private List<Agent> agents;
+    public void add(Agent a) {
+        agents.add(a);
+        a.setSimulation(this);
+    }
+
+    public void start() {
+        for(Agent a: agents) {
+            Thread thread = new Thread(a);
+            thread.start();
+        }
+    }
+
+    public void suspend() {
+        for(Agent a: agents) {
+            a.suspend();
+        }
+    }
+
+    public void resume() {
+        for(Agent a: agents) {
+            a.resume();
+        }
+    }
+
+    public void populate() {
+
+    }
+
+    public void stop() {
+        for(Agent a: agents) {
+            a.stop();
+        }
+    }
+
+    public Agent getneightbor(Agent a, double radius) {
+        //need some statement
+    }
+}
+
+class Point implements Serializable {
+    public Integer x, y;
+    public Point(Integer x, Integer y) {
+        this.x = x;
+        this.y = y;
+    }
+}
