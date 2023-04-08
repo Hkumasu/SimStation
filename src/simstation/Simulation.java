@@ -49,7 +49,7 @@ public class Simulation extends Model{
     }
 
     public void populate() {
-
+        //will defind in the subclass
     }
 
     public void stop() {
