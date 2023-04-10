@@ -18,16 +18,10 @@ public class SimulationPanel extends AppPanel {
 
         this.setLayout(new GridLayout(1, 2));
         // controlPanel inherited from AppPanel
-        controlPanel.setLayout(new GridLayout(2, 1));
+        controlPanel.setLayout(new GridLayout(0, 1));
 
         JPanel p = new JPanel();
         JButton b = new JButton("Start");
-        b.addActionListener(this);
-        p.add(b);
-        controlPanel.add(p);
-
-        p = new JPanel();
-        b = new JButton("Suspend");
         b.addActionListener(this);
         p.add(b);
         controlPanel.add(p);
