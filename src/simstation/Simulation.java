@@ -1,6 +1,7 @@
 /*
 4/4/23 - Hazuki Sugahara: Created the file
 4/6/23 - Hazuki Sugahara: Modified the file and still modifiying
+4/11/23 - Hazuki Sugahara: Added statments for agents list.
 */
 
 package simstation;
@@ -15,12 +16,12 @@ public class Simulation extends Model{
     int clock = 0;
     private Point location;
     private List<Point>path;
+    private List<Agent> agents;
 
     public static Integer windowSize = 250;
 
     public Simulation() {
-        location = new Point(125, 125);
-        this.path = new ArrayList<Point>();
+        agents = new LinkedList<Agent>();
     }
 
     public Point getLocation()  { return location;}
