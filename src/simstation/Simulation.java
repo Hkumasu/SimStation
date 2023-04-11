@@ -1,7 +1,7 @@
 /*
 4/4/23 - Hazuki Sugahara: Created the file
 4/6/23 - Hazuki Sugahara: Modified the file and still modifiying
-4/11/23 - Hazuki Sugahara: Added statments for agents list.
+4/11/23 - Hazuki Sugahara: Added statments for agents list and deleted the point class
 */
 
 package simstation;
@@ -24,9 +24,9 @@ public class Simulation extends Model{
         agents = new LinkedList<Agent>();
     }
 
-    public Point getLocation()  { return location;}
-    public Iterator<Point> iterator() { return path.iterator(); }
-    private List<Agent> agents;
+ //   public Point getLocation()  { return location;}
+ //   public Iterator<Point> iterator() { return path.iterator(); }
+    
     public void add(Agent a) {
         agents.add(a);
         a.setSimulation(this);
@@ -52,7 +52,7 @@ public class Simulation extends Model{
     }
 
     public void populate() {
-
+        //will declared in subclass
     }
 
     public void stop() {
@@ -63,13 +63,5 @@ public class Simulation extends Model{
 
     public Agent getneightbor(Agent a, double radius) {
         //need some statement
-    }
-}
-
-class Point implements Serializable {
-    public Integer x, y;
-    public Point(Integer x, Integer y) {
-        this.x = x;
-        this.y = y;
     }
 }
