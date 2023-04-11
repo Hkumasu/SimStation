@@ -60,6 +60,10 @@ public class Simulation extends Model{
             a.stop();
         }
     }
+    
+    public void stats() {
+        Utilities.inform();
+    }
 
     public Agent getneightbor(Agent a, double radius) {
         int startIndex = (int) (Math.random() * agents.size()); // random starting index for location
