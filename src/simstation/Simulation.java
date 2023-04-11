@@ -62,6 +62,16 @@ public class Simulation extends Model{
     }
 
     public Agent getneightbor(Agent a, double radius) {
-        //need some statement
+        int startIndex = (int) (Math.random() * agents.size()); // random starting index for location
+        int index = startIndex;
+        do { //finds neighboring agent
+            Agent a2 = agents.get(index);
+            double distance = Math.sqrt(Math.pow(a.getXc() - a2.getXc(), 2) + Math.pow(a.getYc() - a2.getYc(), 2));
+            if (a != a2 && distance <= radius) {
+                return a2;
+            }
+            index = (index + 1) % agents.size(); // moves to the next agent in the list
+        } while (index != startIndex); // loop until we get back to the starting index
+        return null; // when no neighbor is found
     }
 }
