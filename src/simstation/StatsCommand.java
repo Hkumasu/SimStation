@@ -14,6 +14,6 @@ public class StatsCommand extends Command {
 
     public void execute() {
         Simulation m = (Simulation)model;
-        m.populate();
+        m.stats();
     }
 }
