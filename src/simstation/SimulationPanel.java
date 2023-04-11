@@ -50,11 +50,35 @@ public class SimulationPanel extends AppPanel {
         p.add(b);
         controlPanel.add(p);
     }
+    
+      public void actionPerformed(ActionEvent e) {
+        String cmd = e.getActionCommand();
+        switch (cmd) {
+            case "Start":
+                new StartCommand(model).execute();
+                break;
+            case "Suspend":
+                new SuspendCommand(model).execute();
+                break;
+            case "Resume":
+                new ResumeCommand(model).execute();
+                break;
+            case "Stop":
+                new StopCommand(model).execute();
+                break;
+            case "Stats":
+                new StatsCommand(model).execute();
+                break;
+            default:
+                super.actionPerformed(e);
+                break;
+        }
+    }
 
     public static void main(String[] args) {
         AppFactory factory = new SimStationFactory();
         AppPanel panel = new SimulationPanel(factory);
         panel.display();
     }
-}
+
 }
