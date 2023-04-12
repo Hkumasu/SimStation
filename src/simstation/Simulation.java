@@ -1,6 +1,7 @@
 /*
 4/4/23 - Hazuki Sugahara: Created the file
 4/6/23 - Hazuki Sugahara: Modified the file and still modifiying
+4/11/23 - Hazuki Sugahara: Added statments for agents list and deleted the point class
 */
 
 package simstation;
@@ -15,17 +16,17 @@ public class Simulation extends Model{
     int clock = 0;
     private Point location;
     private List<Point>path;
+    private List<Agent> agents;
 
     public static Integer windowSize = 250;
 
     public Simulation() {
-        location = new Point(125, 125);
-        this.path = new ArrayList<Point>();
+        agents = new LinkedList<Agent>();
     }
 
-    public Point getLocation()  { return location;}
-    public Iterator<Point> iterator() { return path.iterator(); }
-    private List<Agent> agents;
+ //   public Point getLocation()  { return location;}
+ //   public Iterator<Point> iterator() { return path.iterator(); }
+    
     public void add(Agent a) {
         agents.add(a);
         a.setSimulation(this);
@@ -51,7 +52,7 @@ public class Simulation extends Model{
     }
 
     public void populate() {
-
+        //will declared in subclass
     }
 
     public void stop() {
@@ -59,16 +60,22 @@ public class Simulation extends Model{
             a.stop();
         }
     }
+    
+    public void stats() {
+        Utilities.inform();
+    }
 
     public Agent getneightbor(Agent a, double radius) {
-        //need some statement
-    }
-}
-
-class Point implements Serializable {
-    public Integer x, y;
-    public Point(Integer x, Integer y) {
-        this.x = x;
-        this.y = y;
+        int startIndex = (int) (Math.random() * agents.size()); // random starting index for location
+        int index = startIndex;
+        do { //finds neighboring agent
+            Agent a2 = agents.get(index);
+            double distance = Math.sqrt(Math.pow(a.getXc() - a2.getXc(), 2) + Math.pow(a.getYc() - a2.getYc(), 2));
+            if (a != a2 && distance <= radius) {
+                return a2;
+            }
+            index = (index + 1) % agents.size(); // moves to the next agent in the list
+        } while (index != startIndex); // loop until we get back to the starting index
+        return null; // when no neighbor is found
     }
 }
