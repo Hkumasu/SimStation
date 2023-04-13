@@ -10,7 +10,6 @@ import java.io.Serializable;
 import java.util.Random;
 
 abstract class Agent implements Serializable, Runnable {
-  protected String name;
 
     protected Heading heading;
     protected Thread myThread;
@@ -22,8 +21,7 @@ abstract class Agent implements Serializable, Runnable {
     protected int xc;
     protected int yc;
 
-    public Agent(String name) {
-        this.name = name;
+    public Agent() {
         suspended = false;
         stopped = false;
         myThread = null;
@@ -33,14 +31,6 @@ abstract class Agent implements Serializable, Runnable {
     }
 
     public void setSimulation(Simulation s) { simulation = s; }
-    public String getName() { return name; }
-    public synchronized String toString() {
-        String result = name;
-        if (stopped) result += " (stopped)";
-        else if (suspended) result += " (suspended)";
-        else result += " (running)";
-        return result;
-    }
     // thread stuff:
     public synchronized void stop() { stopped = true; }
     public synchronized boolean isStopped() { return stopped; }
