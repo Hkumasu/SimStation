@@ -13,14 +13,15 @@ public class SimulationView extends View {
     }
 
     public void paintComponent(Graphics gc) {
-        Simulation simulation = (Simulation)model;
-        Color oldColor = gc.getColor();
-        Iterator<Point> it = simulation.iterator();
-        while(it.hasNext()) {
-            Point point = it.next();
-            gc.fillOval(point.x, point.y, 10, 10);
+        super.paintComponent(gc);
+        Simulation s = (Simulation) model;
+        List<Agent> agents = s.getAgents();
+        Graphics2D gc2d = (Graphics2D) gc;
+        gc2d.setColor(Color.GRAY);
+        gc2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+        for (Agent a : agents) {
+            gc.setColor(Color.WHITE);
+            gc.fillOval(a.xc, a.yc,5,5);
         }
-        gc.setColor(Color.white);
-        gc.fillOval(simulation.getLocation().x, simulation.getLocation().y, 10, 10);
     }
 }
