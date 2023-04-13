@@ -13,6 +13,11 @@ Class FlockingSimulation extends Simulation {
   public void populate() {
    //add statement 
   }
+  
+  public String getStatus() {
+  
+  }
+  
   public static void main(String[] args) {
     AppPanel panel = new SimulationPanel(new Flockingfactory());
     panel.display();
