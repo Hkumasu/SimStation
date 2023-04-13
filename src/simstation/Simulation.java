@@ -33,19 +33,23 @@ public class Simulation extends Model{
     }
 
     public void start() {
+        populate();
         for(Agent a: agents) {
             Thread thread = new Thread(a);
             thread.start();
-        }
+        } 
+        startTimer();
     }
 
     public void suspend() {
+        stopTimer();
         for(Agent a: agents) {
             a.suspend();
         }
     }
 
     public void resume() {
+        startTimer();
         for(Agent a: agents) {
             a.resume();
         }
@@ -56,6 +60,7 @@ public class Simulation extends Model{
     }
 
     public void stop() {
+        stopTimer();
         for(Agent a: agents) {
             a.stop();
         }
@@ -78,4 +83,21 @@ public class Simulation extends Model{
         } while (index != startIndex); // loop until we get back to the starting index
         return null; // when no neighbor is found
     }
+    
+    
+    private void startTimer() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ClockUpdater(), 100, 100);
+    }
+    
+    private void stopTimer() {
+        timer.cancel();
+        timer.purge();
+    }
+    
+    private class ClockUpdater extends TimerTask {
+        public void run() {
+            clock++;
+            changed();
+        }
 }
