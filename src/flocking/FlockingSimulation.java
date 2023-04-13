@@ -24,7 +24,7 @@ Class FlockingSimulation extends Simulation {
   }
 }
 
-class FlockingFactory extends SimulationFactory {
+class FlockingFactory extends SimStationFactory {
   public Model makeModel() { return new FlockingSimulation(); }
   public String getTitle() { return "Flocking"; }
 }
