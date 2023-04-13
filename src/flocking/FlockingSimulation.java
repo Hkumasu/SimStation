@@ -5,7 +5,7 @@
 package flocking;
 
 import mvc.*;
-import SimStation.*;
+import simstation.*;
 import java.awt.*;
 
 Class FlockingSimulation extends Simulation {
