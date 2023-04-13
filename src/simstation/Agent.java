@@ -62,8 +62,21 @@ abstract class Agent implements Serializable, Runnable {
     public Integer getYc() {
         return yc;
     }
+    
+    public void onStart() {
+        //empty method
+    }
+
+    public void onInterrupted() {
+        //empty method
+    }
+
+    public void onExit() {
+        //empty method
+    }
 
     public void run() {
+        onStart();
         myThread = Thread.currentThread();
         while (!isStopped()) {
             try {
@@ -71,9 +84,11 @@ abstract class Agent implements Serializable, Runnable {
                 Thread.sleep(1000);
                 checkSuspended();
             } catch(InterruptedException e) {
+                onInterrupted();
                 e.printStackTrace();
             }
         }
+        onExit();
     }
 
     public abstract void update();
