@@ -2,6 +2,8 @@
 4/4/23 - Hazuki Sugahara: Created the file
 4/6/23 - Hazuki Sugahara: Modified the file and still modifiying
 4/11/23 - Hazuki Sugahara: Added statments for agents list and deleted the point class
+4/11/23 - Jelinne Ramos: Added getNeighbor and stats method 
+4/13/23 - Jelinne Ramos: added methods for the timer
 */
 
 package simstation;
@@ -17,6 +19,7 @@ public class Simulation extends Model{
     private Point location;
     private List<Point>path;
     private List<Agent> agents;
+    transient private Timer timer;
 
     public static Integer windowSize = 250;
 
