@@ -34,6 +34,11 @@ public class Simulation extends Model{
         agents.add(a);
         a.setSimulation(this);
     }
+    
+    public List<Agent> getAgents()
+    {
+        return agents;
+    }
 
     public void start() {
         populate();
@@ -67,10 +72,11 @@ public class Simulation extends Model{
         for(Agent a: agents) {
             a.stop();
         }
+        clock = 0;
     }
     
     public void stats() {
-        Utilities.inform();
+        Utilities.inform("#agents = " + getAgents().size() + "\nclock = " + clock);
     }
 
     public Agent getneightbor(Agent a, double radius) {
