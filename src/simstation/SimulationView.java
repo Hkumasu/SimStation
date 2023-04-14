@@ -8,6 +8,9 @@ package simstation;
 
 import mvc.*;
 
+import java.awt.*;
+import java.util.List;
+
 public class SimulationView extends View {
   public SimulationView(Simulation s) {
         super(s);
