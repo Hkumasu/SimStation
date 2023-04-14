@@ -8,7 +8,7 @@ import mvc.*;
 import simstation.*;
 import java.awt.*;
 
-Class FlockingSimulation extends Simulation {
+public class FlockingSimulation extends Simulation {
   
   public void populate() {
    //add statement 
