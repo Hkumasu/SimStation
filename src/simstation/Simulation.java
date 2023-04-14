@@ -4,6 +4,7 @@
 4/11/23 - Hazuki Sugahara: Added statments for agents list and deleted the point class
 4/11/23 - Jelinne Ramos: Added getNeighbor and stats method 
 4/13/23 - Jelinne Ramos: added methods for the timer
+4/13/23 - Hazuki Sugahara: Deleted point and getLocation method
 */
 
 package simstation;
@@ -16,8 +17,6 @@ import java.util.List;
 
 public class Simulation extends Model{
     int clock = 0;
-    private Point location;
-    private List<Point>path;
     private List<Agent> agents;
     transient private Timer timer;
 
@@ -26,17 +25,13 @@ public class Simulation extends Model{
     public Simulation() {
         agents = new LinkedList<Agent>();
     }
-
- //   public Point getLocation()  { return location;}
- //   public Iterator<Point> iterator() { return path.iterator(); }
     
     public void add(Agent a) {
         agents.add(a);
         a.setSimulation(this);
     }
     
-    public List<Agent> getAgents()
-    {
+    public List<Agent> getAgents() {
         return agents;
     }
 
