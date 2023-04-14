@@ -2,6 +2,8 @@
 4/4/23 - Hazuki Sugahara: Created the file
 4/6/23 - Hazuki Sugahara: copied the agentlab and modifiying for simstation
 4/8/23 - Rohith Iyengar: added the move method and x,y coordinates
+4/13/23 - Jelinne Ramos: added empty methods used in run  
+4/13/23 - Hazuki Sugahara: added int speed and getspeed and getheading method
 */
 
 package simstation;
@@ -9,21 +11,20 @@ package simstation;
 import java.io.Serializable;
 import java.util.Random;
 
-abstract class Agent implements Serializable, Runnable {
-  protected String name;
+public abstract class Agent implements Serializable, Runnable {
 
     protected Heading heading;
     protected Thread myThread;
     private boolean suspended, stopped;
     protected Simulation simulation;
-
+    protected int speed;
+    
     protected Random random = new Random();
 
     protected int xc;
     protected int yc;
 
-    public Agent(String name) {
-        this.name = name;
+    public Agent() {
         suspended = false;
         stopped = false;
         myThread = null;
@@ -31,16 +32,10 @@ abstract class Agent implements Serializable, Runnable {
         this.xc = random.nextInt(simulation.windowSize);
         this.yc = random.nextInt(simulation.windowSize);
     }
-
+    
+    public Heading getHeading() { return heading; }
+    public int getSpeed() { return speed; }
     public void setSimulation(Simulation s) { simulation = s; }
-    public String getName() { return name; }
-    public synchronized String toString() {
-        String result = name;
-        if (stopped) result += " (stopped)";
-        else if (suspended) result += " (suspended)";
-        else result += " (running)";
-        return result;
-    }
     // thread stuff:
     public synchronized void stop() { stopped = true; }
     public synchronized boolean isStopped() { return stopped; }
@@ -72,8 +67,21 @@ abstract class Agent implements Serializable, Runnable {
     public Integer getYc() {
         return yc;
     }
+    
+    public void onStart() {
+        //empty method
+    }
+
+    public void onInterrupted() {
+        //empty method
+    }
+
+    public void onExit() {
+        //empty method
+    }
 
     public void run() {
+        onStart();
         myThread = Thread.currentThread();
         while (!isStopped()) {
             try {
@@ -81,9 +89,11 @@ abstract class Agent implements Serializable, Runnable {
                 Thread.sleep(1000);
                 checkSuspended();
             } catch(InterruptedException e) {
+                onInterrupted();
                 e.printStackTrace();
             }
         }
+        onExit();
     }
 
     public abstract void update();
