@@ -14,7 +14,7 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Simulation extends Model{
-    int clock = 0;
+    public int clock = 0;
     private List<Agent> agents;
     transient private Timer timer;
 
