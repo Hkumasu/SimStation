@@ -1,3 +1,7 @@
+/*
+4/13/23 - Hazuki Sugahara: Created the file
+*/
+
 package plague;
 
 import simstation.*;
