@@ -34,6 +34,7 @@ public class Simulation extends Model{
     }
 
     public void start() {
+        agents.clear();
         populate();
         for(Agent a: agents) {
             Thread thread = new Thread(a);
@@ -66,7 +67,6 @@ public class Simulation extends Model{
             a.stop();
         }
         clock = 0;
-        agents.clear();
     }
     
     public void stats() {
