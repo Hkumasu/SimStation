@@ -1,0 +1,29 @@
+/*
+4/13/23 - Hazuki Sugahara: Created the file
+*/
+
+package plague;
+
+import java.awt.*;
+import java.util.List;
+import simstation.*;
+
+public class PlagueView extends SimulationView{
+
+    public PlagueView(PlagueSimulation s) { super(s); }
+
+    public void paintComponent(Graphics gc) {
+        super.paintComponent(gc);
+        Simulation s = (Simulation) model;
+        List<Agent> agents = s.getAgents();
+        Graphics2D gc2d = (Graphics2D) gc;
+        gc2d.setColor(Color.GRAY);
+        gc2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+        for (Agent a : agents) {
+            if(a.getInfected()) //doesn't work
+                gc.setColor(Color.RED);
+            else gc.setColor(Color.green);
+            gc.fillOval(a.xc, a.yc,5,5);
+        }
+    }
+}
