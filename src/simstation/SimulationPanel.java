@@ -14,10 +14,8 @@ public class SimulationPanel extends AppPanel {
         super(factory);
 
         this.model.addPropertyChangeListener(this);
-        // FrogView created and added by AppPanel constructor
 
         this.setLayout(new GridLayout(1, 2));
-        // controlPanel inherited from AppPanel
         controlPanel.setLayout(new GridLayout(5, 1));
 
         JPanel p = new JPanel();
