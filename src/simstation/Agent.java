@@ -11,7 +11,7 @@ package simstation;
 import java.io.Serializable;
 import java.util.Random;
 
-abstract class Agent implements Serializable, Runnable {
+public abstract class Agent implements Serializable, Runnable {
 
     protected Heading heading;
     protected Thread myThread;
