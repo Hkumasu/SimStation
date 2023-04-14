@@ -4,7 +4,7 @@
 4/11/23 - Hazuki Sugahara: Added statments for agents list and deleted the point class
 4/11/23 - Jelinne Ramos: Added getNeighbor and stats method 
 4/13/23 - Jelinne Ramos: added methods for the timer
-4/13/23 - Hazuki Sugahara: Deleted point and getLocation method
+4/13/23 - Hazuki Sugahara: Deleted point and getLocation method. Clear Agents when stop is pushed
 */
 
 package simstation;
@@ -66,6 +66,7 @@ public class Simulation extends Model{
             a.stop();
         }
         clock = 0;
+        agents.clear();
     }
     
     public void stats() {
