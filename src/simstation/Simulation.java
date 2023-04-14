@@ -13,7 +13,7 @@ import mvc.*;
 import java.io.Serializable;
 import java.util.*;
 
-public class Simulation extends Model{
+public class Simulation extends Model {
     public int clock = 0;
     private List<Agent> agents;
     transient private Timer timer;
@@ -23,38 +23,41 @@ public class Simulation extends Model{
     public Simulation() {
         agents = new LinkedList<Agent>();
     }
-    
+
     public void add(Agent a) {
         agents.add(a);
         a.setSimulation(this);
     }
-    
+
     public List<Agent> getAgents() {
         return agents;
     }
 
     public void start() {
         agents.clear();
+        startTimer();
         populate();
-        for(Agent a: agents) {
+        for (Agent a : agents) {
             Thread thread = new Thread(a);
             thread.start();
-        } 
-        startTimer();
+        }
+        changed();
     }
 
     public void suspend() {
         stopTimer();
-        for(Agent a: agents) {
+        for (Agent a : agents) {
             a.suspend();
         }
+        changed();
     }
 
     public void resume() {
         startTimer();
-        for(Agent a: agents) {
+        for (Agent a : agents) {
             a.resume();
         }
+        changed();
     }
 
     public void populate() {
@@ -63,17 +66,17 @@ public class Simulation extends Model{
 
     public void stop() {
         stopTimer();
-        for(Agent a: agents) {
+        for (Agent a : agents) {
             a.stop();
         }
         clock = 0;
     }
-    
+
     public void stats() {
         Utilities.inform("#agents = " + getAgents().size() + "\nclock = " + clock);
     }
 
-    public Agent getneightbor(Agent a, double radius) {
+    public Agent getNeighbor(Agent a, double radius) {
         int startIndex = (int) (Math.random() * agents.size()); // random starting index for location
         int index = startIndex;
         do { //finds neighboring agent
@@ -86,21 +89,23 @@ public class Simulation extends Model{
         } while (index != startIndex); // loop until we get back to the starting index
         return null; // when no neighbor is found
     }
-    
-    
+
+
     private void startTimer() {
         timer = new Timer();
         timer.scheduleAtFixedRate(new ClockUpdater(), 100, 100);
     }
-    
+
     private void stopTimer() {
         timer.cancel();
         timer.purge();
     }
-    
+
     private class ClockUpdater extends TimerTask {
         public void run() {
             clock++;
             changed();
         }
+    }
+
 }

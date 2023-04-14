@@ -11,7 +11,7 @@ import java.util.List;
 public class FlockingSimulation extends Simulation {
 
     public void populate() {
-        for(int i = 0; i < 25; i++)
+        for(int i = 0; i < 40; i++)
             add(new Bird());
     }
 

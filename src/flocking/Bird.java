@@ -5,7 +5,10 @@
 package flocking;
 
 import mvc.*;
-import simstation;
+import simstation.*;
+import simstation.Agent;
+import simstation.Heading;
+
 class Bird extends Agent {
 
 //    int speed;
@@ -13,11 +16,11 @@ class Bird extends Agent {
     public Bird() {
         super();
         heading = Heading.random();
-        speed = Utilities.rng.nextInt(5) + 1;
+        speed = Utilities.rng.nextInt(10) + 1;
     }
 
     public void update() {
-        Agent neighbor = simulation.getneightbor(this, 10);
+        Agent neighbor = simulation.getNeighbor(this, 5);
         if (neighbor != null) {
             heading = neighbor.getHeading();
             speed = neighbor.getSpeed();

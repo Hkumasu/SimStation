@@ -1,5 +1,7 @@
 package simstation;
 
+import java.util.Random;
+
 public enum Heading {
 
     NORTH,
