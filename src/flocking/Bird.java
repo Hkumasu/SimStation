@@ -11,19 +11,21 @@ import simstation.Heading;
 
 class Bird extends Agent {
 
-//    int speed;
+   int speed;
 
     public Bird() {
         super();
         heading = Heading.random();
-        speed = Utilities.rng.nextInt(10) + 1;
+        speed = Utilities.rng.nextInt(5) + 1;
     }
 
+    public int getSpeed() { return speed; }
+    
     public void update() {
-        Agent neighbor = simulation.getNeighbor(this, 5);
+        Bird neighbor = (Bird) simulation.getneightbor(this, 5);
         if (neighbor != null) {
             heading = neighbor.getHeading();
-            speed = neighbor.getSpeed();
+            speed = neighbor.speed;
         }
         move(speed);
     }
