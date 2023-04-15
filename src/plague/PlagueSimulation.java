@@ -26,7 +26,8 @@ public class PlagueSimulation extends Simulation {
             if(host.getInfected())
                 numInfected++;
         }
-        percentInfected = numInfected / agents.size() * 100;
+        double num = agents.size();
+        percentInfected = numInfected / num * 100;
 
         Utilities.inform("#agents = " + agents.size() + "\n" + "clock = " + clock + "\n" +
                 "#% infected = " + percentInfected);
