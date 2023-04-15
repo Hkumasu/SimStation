@@ -27,7 +27,7 @@ public class Host extends Agent{
     public void update() {
         heading = Heading.random();
         int steps = Utilities.rng.nextInt(10) + 1;
-        Host neighbor = (Host) simulation.getneightbor(this, 10);
+        Host neighbor = (Host) simulation.getNeighbor(this, 10);
         if (neighbor != null) {
             if(neighbor.getInfected())
                 if(Utilities.rng.nextInt(100) > resistence)
