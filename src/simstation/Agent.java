@@ -17,7 +17,6 @@ public abstract class Agent implements Serializable, Runnable {
     protected Thread myThread;
     private boolean suspended, stopped;
     protected Simulation simulation;
-    protected int speed;
     
     protected Random random = new Random();
 
@@ -34,7 +33,6 @@ public abstract class Agent implements Serializable, Runnable {
     }
     
     public Heading getHeading() { return heading; }
-    public int getSpeed() { return speed; }
     public void setSimulation(Simulation s) { simulation = s; }
     // thread stuff:
     public synchronized void stop() { stopped = true; }
