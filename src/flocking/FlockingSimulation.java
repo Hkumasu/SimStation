@@ -17,9 +17,11 @@ public class FlockingSimulation extends Simulation {
 
     public void stats() {
         int speed1 = 0, speed2 = 0, speed3 = 0, speed4 = 0, speed5 = 0, speed = 0;
+        Bird b;
         List<Agent> agents = this.getAgents();
         for(Agent a: agents) {
-            speed = a.getSpeed();
+            b = (Bird) a;
+            speed = b.getSpeed();
             switch (speed) {
                 case 1: speed1++;
                 break;
