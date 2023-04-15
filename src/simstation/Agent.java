@@ -3,7 +3,7 @@
 4/6/23 - Hazuki Sugahara: copied the agentlab and modifiying for simstation
 4/8/23 - Rohith Iyengar: added the move method and x,y coordinates
 4/13/23 - Jelinne Ramos: added empty methods used in run  
-4/13/23 - Hazuki Sugahara: added int speed and getspeed and getheading method
+4/13/23 - Hazuki Sugahara: getheading method
 */
 
 package simstation;
