@@ -1,5 +1,6 @@
 /*
-4/13/2023 - Hazuki Sugahara: Created the file 
+4/13/23 - Hazuki Sugahara: Created the file 
+4/14/23 - Hazuki Sugahara: Modified the file
 */
 
 package flocking;
@@ -17,9 +18,11 @@ public class FlockingSimulation extends Simulation {
 
     public void stats() {
         int speed1 = 0, speed2 = 0, speed3 = 0, speed4 = 0, speed5 = 0, speed = 0;
+        Bird b;
         List<Agent> agents = this.getAgents();
         for(Agent a: agents) {
-            speed = a.getSpeed();
+            b = (Bird) a;
+            speed = b.getSpeed();
             switch (speed) {
                 case 1: speed1++;
                 break;

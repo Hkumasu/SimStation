@@ -3,7 +3,7 @@
 4/6/23 - Hazuki Sugahara: copied the agentlab and modifiying for simstation
 4/8/23 - Rohith Iyengar: added the move method and x,y coordinates
 4/13/23 - Jelinne Ramos: added empty methods used in run  
-4/13/23 - Hazuki Sugahara: added int speed and getspeed and getheading method
+4/13/23 - Hazuki Sugahara: getheading method
 */
 
 package simstation;
@@ -17,7 +17,6 @@ public abstract class Agent implements Serializable, Runnable {
     protected Thread myThread;
     private boolean suspended, stopped;
     protected Simulation simulation;
-    protected int speed;
     
     protected Random random = new Random();
 
@@ -34,7 +33,6 @@ public abstract class Agent implements Serializable, Runnable {
     }
     
     public Heading getHeading() { return heading; }
-    public int getSpeed() { return speed; }
     public void setSimulation(Simulation s) { simulation = s; }
     // thread stuff:
     public synchronized void stop() { stopped = true; }

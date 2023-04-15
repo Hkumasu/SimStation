@@ -1,5 +1,6 @@
 /*
 4/13/23 - Hazuki Sugahara: Created the file
+4/14/23 - Hazuki Sugahara: Modified the file
 */
 
 package plague;
@@ -19,8 +20,10 @@ public class PlagueView extends SimulationView{
         Graphics2D gc2d = (Graphics2D) gc;
         gc2d.setColor(Color.GRAY);
         gc2d.fillRect(0, 0, this.getWidth(), this.getHeight());
+        Host host;
         for (Agent a : agents) {
-            if(a.getInfected()) //doesn't work
+            host = (Host) a;
+            if(host.getInfected())
                 gc.setColor(Color.RED);
             else gc.setColor(Color.green);
             gc.fillOval(a.xc, a.yc,5,5);
