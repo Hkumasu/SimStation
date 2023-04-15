@@ -1,13 +1,12 @@
 /*
-4/13/2023 - Hazuki Sugahara: Created the file
+4/13/23 - Hazuki Sugahara: Created the file
+4/14/23 - Hazuki Sugahara: Modified the file
 */
 
 package flocking;
 
 import mvc.*;
 import simstation.*;
-import simstation.Agent;
-import simstation.Heading;
 
 class Bird extends Agent {
 
