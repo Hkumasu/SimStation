@@ -7,6 +7,7 @@ package plague;
 
 import simstation.*;
 import mvc.*;
+import java.util.*;
 
 public class PlagueSimulation extends Simulation {
     public static int VIRULENCE = 50; //% chance of infection
