@@ -1,5 +1,7 @@
 package prisoner;
 
+import java.util.ArrayList;
+
 public abstract class Strat {
 
     private Prisoner prisoner;
@@ -9,6 +11,6 @@ public abstract class Strat {
         this.prisoner = prisoner;
     }
 
-    public abstract Boolean useStrat(Boolean gotCheatedOnLastTime);
+    public abstract Boolean useStrat(ArrayList<Boolean> history);
 
 }
