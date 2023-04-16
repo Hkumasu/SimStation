@@ -1,5 +1,6 @@
 /*
 4/13/23 - Hazuki Sugahara: Created the file
+4/15/23 - Hazuki Sugahara: Add make view statement 
 */
 
 package plague;
@@ -9,30 +10,38 @@ import mvc.*;
 
 public class PlagueSimulation extends Simulation {
     public static int VIRULENCE = 50; //% chance of infection
-    public static int RESISTANCE = 2; //% chance of resisting infection
-//     List<Host> agents;
 
     public void populate() {
-        for(int i = 0; i < 50; i++)
+        for(int i = 0; i < 40; i++) {
             add(new Host());
-        //agents.add(new Host());
+        }
     }
 
     public void stats() {
         double percentInfected;
         int numInfected = 0;
-        for(Person a: agents) {
-            if(a.getInfected())
+        List<Agent> agents = this.getAgents();
+        Host host;
+        for(Agent a: agents) {
+            host = (Host) a;
+            if(host.getInfected())
                 numInfected++;
         }
-        percentInfected = numInfected / agents.size() * 100;
+        double num = agents.size();
+        percentInfected = numInfected / num * 100;
 
         Utilities.inform("#agents = " + agents.size() + "\n" + "clock = " + clock + "\n" +
                 "#% infected = " + percentInfected);
+    }
+
+    public static void main(String[] args) {
+        AppPanel panel = new SimulationPanel(new PlagueFactory());
+        panel.display();
     }
 }
 
 class PlagueFactory extends SimStationFactory {
     public Model makeModel() { return new PlagueSimulation(); }
     public String getTitle() { return "Plague";}
+    public View makeView(Model m) { return new PlagueView((PlagueSimulation)m); }
 }
