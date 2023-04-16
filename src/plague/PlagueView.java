@@ -26,7 +26,7 @@ public class PlagueView extends SimulationView{
             if(host.getInfected())
                 gc.setColor(Color.RED);
             else gc.setColor(Color.green);
-            gc.fillOval(a.xc, a.yc,5,5);
+            gc.fillOval(a.getXc(), a.getYc(),5,5);
         }
     }
 }
