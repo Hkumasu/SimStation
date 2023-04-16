@@ -35,6 +35,7 @@ public class Simulation extends Model {
 
     public void start() {
         agents.clear();
+        clock = 0;
         startTimer();
         populate();
         for (Agent a : agents) {
@@ -69,7 +70,6 @@ public class Simulation extends Model {
         for (Agent a : agents) {
             a.stop();
         }
-        clock = 0;
     }
 
     public void stats() {
