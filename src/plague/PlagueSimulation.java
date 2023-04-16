@@ -1,5 +1,6 @@
 /*
 4/13/23 - Hazuki Sugahara: Created the file
+4/15/23 - Hazuki Sugahara: Add make view statement 
 */
 
 package plague;
