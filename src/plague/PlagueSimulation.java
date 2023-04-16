@@ -43,4 +43,5 @@ public class PlagueSimulation extends Simulation {
 class PlagueFactory extends SimStationFactory {
     public Model makeModel() { return new PlagueSimulation(); }
     public String getTitle() { return "Plague";}
+    public View makeView(Model m) { return new PlagueView((PlagueSimulation)m); }
 }
