@@ -34,7 +34,7 @@ public class RandomWalkSimulation extends Simulation {
 
     public void populate() {
         for(int i = 0; i < 15; i++)
-            addAgent(new Drunk());
+            add(new Drunk());
     }
 
     public static void main(String[] args) {

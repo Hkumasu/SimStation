@@ -9,6 +9,7 @@ import simstation.Heading;
 public class Prisoner extends Agent {
 
     private int fitness = 0;
+    private int speed;
     private Strat strat;
     private ArrayList<Boolean> history;
 
